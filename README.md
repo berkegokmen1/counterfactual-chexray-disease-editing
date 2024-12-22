@@ -1,5 +1,4 @@
 # Counterfactual Disease Removal and Generation in Chest X-Rays Using Diffusion Models
-### In Submission for CVPR2025.
 
 [Paper](https://berkegokmen1.github.io/counterfactual-disease-removal-and-generation-chest-xray/) | [Project Website](https://berkegokmen1.github.io/counterfactual-disease-removal-and-generation-chest-xray/) | [BibTeX](#bibtex)
 
