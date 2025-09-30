@@ -1,0 +1,51 @@
+device: cuda
+
+model:
+  
+  clip:
+    path: /path/to/chexzero/chex/best_64_5e-05_original_22000_0.864.pt
+
+  cheff:
+    ae_path: /path/to/chex/chexray-diffusion-ckpts/cheff_autoencoder.pt
+    ldm_path: /path/to/chex/chexray-diffusion-ckpts/cheff_diff_uncond.pt
+    load_external: false
+    external_path: /path/to/chex/chexray-diffusion-ckpts/cheff_diff_uncond.pt
+
+  classifier:
+    model: resnet152 # attnresnet152
+    restore: true
+    path: /path/to/chex/chexpert/exp-resnet-pretrained-256/best_checkpoints/checkpoint_9.pt
+    resize: 256
+    lr: 0.0001
+    pretrained: true
+
+  train:
+    method: attn
+
+data:
+  path: /path/to/chex/CheXpert-v1.0-small
+  prefix: CheXpert-v1.0-small/
+  resize: 256
+  mini_data: 0
+  batch_size: 4
+  train_batch_size: 1
+  test_batch_size: 1
+  num_workers: 7
+  mode: train
+  prefetch_factor: 4
+
+finetune:
+  experiment_name: null
+  target: null
+  log_dir: ./experiments/${finetune.experiment_name}
+  num_timesteps: 50
+  learning_rate: 1e-5
+  num_epochs: 3
+  lambdas:
+    classification_step: 1.5
+    l1_step: 0.1
+    anchor_step: 0.01
+    ###
+    clip_direction_step: 0.
+    clip_distance_step: 0.
+    clip_step: 0
