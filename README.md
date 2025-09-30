@@ -21,6 +21,7 @@ pip install -r requirements.txt [TODO]
 
 ## Inference
 Please download chexzero, chexpert and chexray-diffusion checkpoints from their respective repositories and update the paths in `config.yaml`.
+
 In additon to the checkpoints, you'll need to download `CheXpert-v1.0-small` dataset from the official chexpert website or you may use any chest x-ray image.
 ```bash
 python finetune_sample.py --config config.yaml --target "Pleural Effusion" --mode "removal" --experiment_name "demo"
